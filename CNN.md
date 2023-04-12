@@ -56,3 +56,27 @@
 ## Softmax
 1. 在进行概率计算时，有可能最后得到的结果相加不等于1
 
+## CNN的计算公式
+1. 定义几个参数  
+   输入图片大小 W×W  
+   卷积核大小 F×F  
+   步长 S  
+   padding的像素数 P  
+   于是我们可以得出计算公式为：  
+   N = (W − F + 2P )/S+1  
+   N为向下取整
+
+## 损失函数的计算
+1. 通过对每个参数(w或者b）求偏导后，更新参数，公式为w_new=w_old-$\alpha$*参数的偏导
+   1. 其中$\alpha$为learning rate
+
+## 正则化
+1. L1正则化（Ridge Regression）,normal distributation
+2. L2正则化（Lasso Regression）,guassian distributation(正态分布)
+3. L2正则化比L1正则化更稀疏（减小了更多的参数）
+4. L1和L2的区别：
+   1. L1使用了绝对值 $\lambda$*｜w1+w2｜
+   2. L2使用了 $\lambda$ *(w1+w2)^2
+
+
+

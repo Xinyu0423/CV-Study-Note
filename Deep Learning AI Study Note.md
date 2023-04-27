@@ -46,3 +46,47 @@ https://www.bilibili.com/video/BV1FT4y1E74V?p=27&spm_id_from=pageDriver&vd_sourc
    1. 在不做初始化时，即weight=0时，所有的hidden unit都是在做相同的计算，因此所有的hidden unit都是一样的
    2. [![2023-04-05-13-11-56.png](https://i.postimg.cc/Qxft92Vx/2023-04-05-13-11-56.png)](https://postimg.cc/D8bFRYqt)
    3. 在做初始化时，通常将参数设置的比较小，如图，参数为0.01。因为在参数特别大时,假设使用的是sigmoid函数，得到的结果z值就会特别大，因此斜率就会特别小，这样不利于做梯度下降
+
+## Bias和Variance
+1. 当Train Data的错误率高时，我们称这个模型有很高的Bias，即这个模型是underfitting的
+2. 当Train Data和Dev data的差距很大时，我们称这个模型有很高的Variance，即这个模型时overfitting的
+3. 因此Bias为模型的输出与正确答案的误差
+4. Variance为针对不同的输入资料，模型输出的变化分布（变化性）
+   1. 例子：[![2023-04-18-07-12-38.png](https://i.postimg.cc/0jtZFG8C/2023-04-18-07-12-38.png)](https://postimg.cc/30vgDv0y)
+   2. 如上图，在第二个例子中，train的error为15%，dev的error为16%因为train的error和dev相差不大，所以不是high variance的情况，而第三个例子因为train和d ev的error相差较大，所以为high variance
+5. 当Bias很高时，解决措施：
+   1. Bigger Network
+   2. Train longer
+   3. （NN architecture search）
+6. 当Variance很高时
+   1. more Data
+   2. 正则化
+   3. （NN architecture search）
+7. 在当前big data的时代，Bias variance trade基本不适用，即可以做到在减小Bias的同时，不增加Variance
+
+## 正则化
+1. L1正则和L2正则
+   1. [![2023-04-22-04-04-32.png](https://i.postimg.cc/65BgwW76/2023-04-22-04-04-32.png)](https://postimg.cc/7bQmnyMj)
+
+## Grad check
+1. 当grad check结果小于10**-7时，back prop结果通常是正确的
+2. 小于10**-5时，可能是错误的
+3. 当小于10**-3，通常back prop是错的
+4. 使用Grad Check的建议
+   1. [![2023-04-22-05-00-11.png](https://i.postimg.cc/VNw7w1LB/2023-04-22-05-00-11.png)](https://postimg.cc/18W00kFf)
+
+## What is L2-regularization actually doing?:
+1. L2-regularization relies on the assumption that a model with small weights is simpler than a model with large weights. Thus, by penalizing the square values of the weights in the cost function you drive all the weights to smaller values. It becomes too costly for the cost to have large weights! This leads to a smoother model in which the output changes more slowly as the input changes.
+2. **What you should remember** -- the implications of L2-regularization on: - The cost computation: - A regularization term is added to the cost - The backpropagation function: - There are extra terms in the gradients with respect to weight matrices - Weights end up smaller ("weight decay"): - Weights are pushed to smaller values.
+
+## Dropout
+1. A common mistake when using dropout is to use it both in training and testing. You should use dropout (randomly eliminate nodes) only in training.
+Deep learning frameworks like tensorflow, PaddlePaddle, keras or caffe come with a dropout layer implementation. Don't stress - you will soon learn some of these frameworks.
+2. **What you should remember about dropout:** - Dropout is a regularization technique. - You only use dropout during training. Don't use dropout (randomly eliminate nodes) during test time. - Apply dropout both during forward and backward propagation. - During training time, divide each dropout layer by keep_prob to keep the same expected value for the activations. For example, if keep_prob is 0.5, then we will on average shut down half the nodes, so the output will be scaled by 0.5 since only the remaining half are contributing to the solution. Dividing by 0.5 is equivalent to multiplying by 2. Hence, the output now has the same expected value. You can check that this works even when keep_prob is other values than 0.5.
+
+## 梯度检验
+1. 梯度检验可验证反向传播的梯度与梯度的数值近似值之间的接近度（使用正向传播进行计算）。
+2. 梯度检验很慢，因此我们不会在每次训练中都运行它。通常，你仅需确保其代码正确即可运行它，然后将其关闭并将backprop用于实际的学习过程。
+
+
+

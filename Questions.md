@@ -35,4 +35,28 @@
    1. 梯度下降永远是向loss最小的方向移动
 8. n是什么
 9.  `c2[:,-1]`这个逗号是什么
-10. 
+
+## Questions from 04/18/2023
+1. 模型的泛化是什么
+   1. 泛化能力即模型的学习能力
+2. P48第2分钟的图片是什么意思
+   1. [![2023-04-18-07-04-55.png](https://i.postimg.cc/gkLP0yzL/2023-04-18-07-04-55.png)](https://postimg.cc/Cz02Pqfw)
+   2. 搜索一下方差的问题
+3. 吴恩达C1Week3作业里的cost是什么
+4.  Question: Implement the function backward_propagation() 左右两个图一个是for signle hideen unit，一个是for single hidden layer吗
+    1.  具体说下实现流程
+5. Prediction怎么做预测的
+6. Week4
+   1. Building your Deep Neural Network-Step by Step
+      1. 4.2d为什么要再做一个，是要做一次sigmoid吗
+      2. 6.1第21行为什么要np.matrix
+      3. 6.3 40行为什么要-2
+      4. 6.4 为什么parameter//2==layer数
+7. Cost function是做什么的
+   1. 即为Loss
+8. P51为什么加入正则化后会简化这个NN网络
+9.  为什么在数据量不大的情况下反而容易发生过拟合的情况
+10. 为什么对图像进行翻转/resize可以防止overfitting
+11. P54 07:24是什么意思
+12. normalization是为了做梯度下降吗
+13. Grad check

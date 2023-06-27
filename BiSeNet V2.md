@@ -55,6 +55,30 @@
 4. 缺点：
    1. 训练时收敛的速度会变慢
 
+## SGD
+1. 随机抽出一条数据去做梯度下降，方式为可放回方式
+2. 优势：
+   1. 效率快
+   2. 在一定程度上防止陷入局部最优
+## 损失函数Loss Function
+1. cross entropy loss(交叉墒)
+   1. 用于分类任务的loss function
+   2. y^logy+(1-y^)log(1-y)
+   3. 多用于离散型，比如0和1
+2. y^-y
+   1. 多用于连续型，如预测人的身高
+
+## Transformer
+1. Encoder
+   1. 里面有8个Transformer
+   2. 作用是将语义向量化，让机器能理解这个语义
+   3. 向量化
+2. Decorder
+   1. Decorder Only--生成式GPT
+   2. Encoder和Decoder结合在一起--Machine Translate
+   3. Encoder Only-- Embedding
+   4. 1-3可以做智能问答
+   5. 星火大模型
 
 
 
